@@ -3,7 +3,6 @@ const cors = require("cors");
 const gTTS = require("gtts");
 
 const app = express();
-const PORT = 5000;
 
 app.use(cors(
   {
@@ -13,7 +12,9 @@ app.use(cors(
   }
 ));
 app.use(express.json());
-
+app.get('/', (req, res) => {
+  res.json("hello")
+})
 // TTS endpoint without OpenAI
 app.post("/api/notes-to-voice", async (req, res) => {
   try {
@@ -30,6 +31,6 @@ app.post("/api/notes-to-voice", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server running at http://localhost:${PORT}`);
+// });
