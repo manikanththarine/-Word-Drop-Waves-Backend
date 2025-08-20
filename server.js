@@ -6,7 +6,7 @@ const app = express();
 
 app.use(cors(
   {
-    origin: ["https://word-drop-waves-backend.vercel.app"],
+    origin: ["https://word-drop-waves.vercel.app"],
     method: ["POST", "GET"],
     credentials: true
   }
