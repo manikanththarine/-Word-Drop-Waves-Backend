@@ -5,7 +5,13 @@ const gTTS = require("gtts");
 const app = express();
 const PORT = 5000;
 
-app.use(cors());
+app.use(cors(
+  {
+    origin: ["https://word-drop-waves.vercel.app"],
+    method: ["POST", "GET"],
+    credentials: true
+  }
+));
 app.use(express.json());
 
 // TTS endpoint without OpenAI
