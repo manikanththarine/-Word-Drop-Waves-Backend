@@ -8,6 +8,7 @@ app.use(cors(
   {
     origin: ["https://word-drop-waves-backend.vercel.app"],
     method: ["POST", "GET"],
+    credentials:true
   }
 ));
 app.use(express.json());
