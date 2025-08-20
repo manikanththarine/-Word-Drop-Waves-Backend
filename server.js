@@ -30,6 +30,6 @@ app.post("/api/notes-to-voice", async (req, res) => {
   }
 });
 
-// app.listen(PORT, () => {
-//   console.log(`Server running at http://localhost:${PORT}`);
-// });
+app.listen(3001, () => {
+  console.log(`Server running at http://localhost:${3001}`);
+});
