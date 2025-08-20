@@ -1,0 +1,29 @@
+const express = require("express");
+const cors = require("cors");
+const gTTS = require("gtts");
+
+const app = express();
+const PORT = 5000;
+
+app.use(cors());
+app.use(express.json());
+
+// TTS endpoint without OpenAI
+app.post("/api/notes-to-voice", async (req, res) => {
+  try {
+    const { text } = req.body;
+    if (!text) return res.status(400).send("Text is required");
+
+    const gtts = new gTTS(text, "en");
+    res.setHeader("Content-Type", "audio/mpeg");
+
+    gtts.stream().pipe(res);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error generating voice");
+  }
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});
